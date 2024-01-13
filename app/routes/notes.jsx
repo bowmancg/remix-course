@@ -23,6 +23,11 @@ export async function loader() {
 export async function action({request}) {
     const formData = await request.formData()
     const noteData = Object.fromEntries(formData)
+
+    if (noteData.title.trim().length < 5) {
+        return {message: 'Must be at least 5 characters long.'}
+    }
+
     const existingNotes = await getStoredNotes()
     noteData.id = new Date().toISOString()
     const updatedNotes = existingNotes.concat(noteData)
