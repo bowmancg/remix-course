@@ -22,6 +22,7 @@ export default function NotesPage() {
 
 export async function loader() {
   const notes = await getStoredNotes();
+  
   return notes;
 }
 
@@ -42,6 +43,17 @@ export async function action({ request }) {
 
 export function links() {
   return [...newNoteLinks(), ...noteListLinks()];
+}
+
+export function CatchBoundary () {
+  const caughtResponse = useRouteError()
+  const message = caughtResponse.data?.message || 'Data not found'
+  return (
+    <main>
+      <NewNote />
+      <p className="info-message">{message}</p>
+    </main>
+  )
 }
 
 export function ErrorBoundary() {
