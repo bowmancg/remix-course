@@ -48,12 +48,14 @@ export function links() {
 export function CatchBoundary () {
   const caughtResponse = useRouteError()
   const message = caughtResponse.data?.message || 'Data not found'
-  return (
-    <main>
-      <NewNote />
-      <p className="info-message">{message}</p>
-    </main>
-  )
+  if (isRouteErrorResponse(message)) {
+    return (
+      <main>
+        <NewNote />
+        <p className="info-message">{caughtResponse.message}</p>
+      </main>
+    )
+  }
 }
 
 export function ErrorBoundary() {

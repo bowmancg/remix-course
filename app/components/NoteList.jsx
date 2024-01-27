@@ -1,6 +1,11 @@
 import styles from './NoteList.css';
 
 function NoteList({ notes }) {
+  if (!notes || notes.length == 0) {
+    return (
+      <p>No notes found.</p>
+    )
+  }
   return (
     <ul id="note-list">
       {notes.map((note, index) => (
