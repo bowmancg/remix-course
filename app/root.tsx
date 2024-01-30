@@ -6,7 +6,7 @@ import {
   LiveReload,
   Meta,
   Outlet,
-  Scripts,
+  
   ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
@@ -34,7 +34,7 @@ export default function App() {
         </header>
         <Outlet />
         <ScrollRestoration />
-        <Scripts />
+        
         <LiveReload />
       </body>
     </html>
@@ -65,7 +65,7 @@ export function ErrorBoundary() {
             </p>
           </main>
           <ScrollRestoration />
-          <Scripts />
+          
           <LiveReload />
         </body>
       </html>
