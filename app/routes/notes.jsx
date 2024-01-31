@@ -45,6 +45,20 @@ export function links() {
   return [...newNoteLinks(), ...noteListLinks()];
 }
 
+export const meta = () => {
+  return [
+    {title: "All Notes"},
+    {
+      property: "og:title",
+      content: "All Notes"
+    },
+    {
+      name: "description",
+      content: "Remix"
+    }
+  ]
+}
+
 export function CatchBoundary () {
   const caughtResponse = useRouteError()
   const message = caughtResponse.data?.message || 'Data not found'
